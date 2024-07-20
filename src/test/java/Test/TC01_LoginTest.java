@@ -28,11 +28,12 @@ public class TC01_LoginTest {
 
     @Test
 
-    public void validTestCases() {
+    public void validTestCases() throws IOException {
         new p01_loginPage(getDriver()).enterUserName(USERNAME)
                 .enterPassword(PASSWORD).clickOnLogin();
-        Assert.assertTrue();
-
+        Assert.assertTrue(new p01_loginPage(getDriver())
+                .assertLoginTc(DataUtils
+                        .getPropertyValue("environment", "HOME_URL")));
     }
 
     @AfterMethod
